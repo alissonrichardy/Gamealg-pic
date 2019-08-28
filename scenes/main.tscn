@@ -1,0 +1,208 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://scripts/PA_GAME.gd" type="Script" id=2]
+[ext_resource path="res://assets/DIV game.png" type="Texture" id=3]
+[ext_resource path="res://scripts/player.gd" type="Script" id=4]
+[ext_resource path="res://assets/player.png" type="Texture" id=5]
+[ext_resource path="res://scripts/objetivo.gd" type="Script" id=6]
+[ext_resource path="res://assets/objetivo.png" type="Texture" id=7]
+[ext_resource path="res://assets/botoes/arrow_up.png" type="Texture" id=8]
+[ext_resource path="res://assets/botoes/arrow_out.png" type="Texture" id=9]
+[ext_resource path="res://assets/botoes/arrow_down.png" type="Texture" id=10]
+[ext_resource path="res://assets/botoes/arrow_right.png" type="Texture" id=11]
+[ext_resource path="res://assets/botoes/arrow_left.png" type="Texture" id=12]
+[ext_resource path="res://assets/botoes/arrow_refresh.png" type="Texture" id=13]
+[ext_resource path="res://scenes/pop_menu.tscn" type="PackedScene" id=14]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.996078, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.117647, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 14.7209
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 14.4689
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 5.0
+height = 5.0
+
+[node name="main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="PA_DICAS" type="Panel" parent="."]
+editor/display_folded = true
+margin_right = 180.0
+margin_bottom = 40.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="LA_DICAS" type="Label" parent="PA_DICAS"]
+margin_right = 180.0
+margin_bottom = 40.0
+text = "DICAS
+"
+align = 1
+valign = 1
+
+[node name="PA_GAME" type="Panel" parent="."]
+editor/display_folded = true
+margin_top = 40.0
+margin_right = 180.0
+margin_bottom = 230.0
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="background" type="Sprite" parent="PA_GAME"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="la_ganhou" type="Label" parent="PA_GAME"]
+visible = false
+self_modulate = Color( 0.988235, 0, 0, 1 )
+margin_right = 180.0
+margin_bottom = 190.0
+text = "Parabéns, Você conseguiu!"
+align = 1
+valign = 1
+
+[node name="player" type="Area2D" parent="PA_GAME"]
+editor/display_folded = true
+position = Vector2( 2.61609, 2.61609 )
+script = ExtResource( 4 )
+
+[node name="tempo" type="Timer" parent="PA_GAME/player"]
+wait_time = 0.01
+
+[node name="tempo_final" type="Timer" parent="PA_GAME/player"]
+one_shot = true
+
+[node name="sprite" type="Sprite" parent="PA_GAME/player"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="label" type="Label" parent="PA_GAME/player/sprite"]
+margin_right = 33.0
+margin_bottom = 35.0
+text = "P"
+align = 1
+valign = 1
+
+[node name="shape" type="CollisionShape2D" parent="PA_GAME/player"]
+visible = false
+position = Vector2( 15.5895, 16.4933 )
+shape = SubResource( 3 )
+
+[node name="objetivo" type="Area2D" parent="PA_GAME"]
+editor/display_folded = true
+position = Vector2( 147, 3.2 )
+script = ExtResource( 6 )
+
+[node name="sprite" type="Sprite" parent="PA_GAME/objetivo"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="shape" type="CollisionShape2D" parent="PA_GAME/objetivo"]
+visible = false
+position = Vector2( 15.4588, 17.3614 )
+shape = SubResource( 4 )
+
+[node name="PA_CONTROLES" type="Panel" parent="."]
+editor/display_folded = true
+margin_top = 230.0
+margin_right = 180.0
+margin_bottom = 320.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="LA_CONTROLES" type="Label" parent="PA_CONTROLES"]
+margin_right = 180.0
+margin_bottom = 90.0
+text = "COTROLES"
+align = 1
+
+[node name="btnUP" type="TouchScreenButton" parent="PA_CONTROLES"]
+position = Vector2( 136.539, 53.7567 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
+shape = SubResource( 5 )
+action = "ui_up"
+
+[node name="btnDown" type="TouchScreenButton" parent="PA_CONTROLES"]
+position = Vector2( 92.4517, 53.7567 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 9 )
+shape = SubResource( 5 )
+action = "ui_down"
+
+[node name="btnRigth" type="TouchScreenButton" parent="PA_CONTROLES"]
+position = Vector2( 51.1444, 53.7567 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 9 )
+shape = SubResource( 5 )
+action = "ui_right"
+
+[node name="btnLeft" type="TouchScreenButton" parent="PA_CONTROLES"]
+position = Vector2( 9.47845, 53.7567 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 12 )
+pressed = ExtResource( 9 )
+shape = SubResource( 5 )
+action = "ui_left"
+
+[node name="btnPlay" type="TouchScreenButton" parent="PA_CONTROLES"]
+position = Vector2( 144.488, 1.90903 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 9 )
+shape = SubResource( 5 )
+action = "ui_play"
+
+[node name="Passos" type="Label" parent="."]
+margin_left = 150.923
+margin_top = 2.05337
+margin_right = 204.923
+margin_bottom = 40.0534
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Passos"
+align = 1
+
+[node name="la_tentativas" type="Label" parent="."]
+margin_left = 157.427
+margin_top = 11.0267
+margin_right = 174.427
+margin_bottom = 25.0267
+text = "0"
+align = 1
+valign = 1
+
+[node name="la_passos" type="Label" parent="."]
+visible = false
+margin_left = 160.823
+margin_top = 25.7435
+margin_right = 177.823
+margin_bottom = 39.7435
+rect_scale = Vector2( 0.5, 0.5 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="pop_menu" parent="." instance=ExtResource( 14 )]
+[connection signal="area_entered" from="PA_GAME/player" to="PA_GAME/player" method="_on_player_area_entered"]
+[connection signal="timeout" from="PA_GAME/player/tempo" to="PA_GAME/player" method="_on_tempo_timeout"]
+[connection signal="timeout" from="PA_GAME/player/tempo_final" to="PA_GAME/player" method="_on_tempo_final_timeout"]
