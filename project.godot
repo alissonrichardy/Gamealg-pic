@@ -19,6 +19,10 @@ config/name="Gamalg"
 run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+script_principal="*res://scripts/script_principal.gd"
+
 [display]
 
 window/size/width=180
