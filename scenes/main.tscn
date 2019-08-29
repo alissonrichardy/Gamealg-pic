@@ -6,13 +6,13 @@
 [ext_resource path="res://melhorias_script/player_update.gd" type="Script" id=4]
 [ext_resource path="res://assets/player.png" type="Texture" id=5]
 [ext_resource path="res://scripts/objetivo.gd" type="Script" id=6]
-[ext_resource path="res://assets/objetivo.png" type="Texture" id=7]
+[ext_resource path="res://assets/botoes/star.png" type="Texture" id=7]
 [ext_resource path="res://assets/botoes/arrow_up.png" type="Texture" id=8]
 [ext_resource path="res://assets/botoes/arrow_out.png" type="Texture" id=9]
 [ext_resource path="res://assets/botoes/arrow_down.png" type="Texture" id=10]
 [ext_resource path="res://assets/botoes/arrow_right.png" type="Texture" id=11]
 [ext_resource path="res://assets/botoes/arrow_left.png" type="Texture" id=12]
-[ext_resource path="res://assets/botoes/arrow_refresh.png" type="Texture" id=13]
+[ext_resource path="res://assets/botoes/script_start.png" type="Texture" id=13]
 [ext_resource path="res://scenes/pop_menu.tscn" type="PackedScene" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -38,8 +38,8 @@ radius = 14.7209
 radius = 14.4689
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 5.0
-height = 5.0
+radius = 8.0
+height = 15.0
 
 [node name="main" type="Node"]
 script = ExtResource( 1 )
@@ -59,6 +59,7 @@ align = 1
 valign = 1
 
 [node name="PA_GAME" type="Panel" parent="."]
+editor/display_folded = true
 margin_top = 40.0
 margin_right = 180.0
 margin_bottom = 230.0
@@ -79,7 +80,6 @@ align = 1
 valign = 1
 
 [node name="player" type="Area2D" parent="PA_GAME"]
-editor/display_folded = true
 position = Vector2( 2.61609, 2.61609 )
 script = ExtResource( 4 )
 
@@ -106,7 +106,6 @@ position = Vector2( 15.5895, 16.4933 )
 shape = SubResource( 3 )
 
 [node name="objetivo" type="Area2D" parent="PA_GAME"]
-editor/display_folded = true
 position = Vector2( 147, 3.2 )
 script = ExtResource( 6 )
 
@@ -120,7 +119,6 @@ position = Vector2( 15.4588, 17.3614 )
 shape = SubResource( 4 )
 
 [node name="PA_CONTROLES" type="Panel" parent="."]
-editor/display_folded = true
 margin_top = 230.0
 margin_right = 180.0
 margin_bottom = 320.0
@@ -134,7 +132,6 @@ align = 1
 
 [node name="btnUP" type="TouchScreenButton" parent="PA_CONTROLES"]
 position = Vector2( 136.539, 53.7567 )
-scale = Vector2( 2, 2 )
 normal = ExtResource( 8 )
 pressed = ExtResource( 9 )
 shape = SubResource( 5 )
@@ -142,7 +139,6 @@ action = "ui_up"
 
 [node name="btnDown" type="TouchScreenButton" parent="PA_CONTROLES"]
 position = Vector2( 92.4517, 53.7567 )
-scale = Vector2( 2, 2 )
 normal = ExtResource( 10 )
 pressed = ExtResource( 9 )
 shape = SubResource( 5 )
@@ -150,7 +146,6 @@ action = "ui_down"
 
 [node name="btnRigth" type="TouchScreenButton" parent="PA_CONTROLES"]
 position = Vector2( 51.1444, 53.7567 )
-scale = Vector2( 2, 2 )
 normal = ExtResource( 11 )
 pressed = ExtResource( 9 )
 shape = SubResource( 5 )
@@ -158,7 +153,6 @@ action = "ui_right"
 
 [node name="btnLeft" type="TouchScreenButton" parent="PA_CONTROLES"]
 position = Vector2( 9.47845, 53.7567 )
-scale = Vector2( 2, 2 )
 normal = ExtResource( 12 )
 pressed = ExtResource( 9 )
 shape = SubResource( 5 )
@@ -166,7 +160,6 @@ action = "ui_left"
 
 [node name="btnPlay" type="TouchScreenButton" parent="PA_CONTROLES"]
 position = Vector2( 144.488, 1.90903 )
-scale = Vector2( 2, 2 )
 normal = ExtResource( 13 )
 pressed = ExtResource( 9 )
 shape = SubResource( 5 )
